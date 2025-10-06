@@ -30,11 +30,31 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Storybook
+      - name: Build
+        env:
+        BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: build
+        # this should match the `pages` option in your adapter-static options
+        path: 'build/'
+
+
+  deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
