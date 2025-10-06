@@ -1,46 +1,42 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main # Adjust if using a different default branch
-
-permissions:
-  contents: write
+    branches: 'main'
 
 jobs:
-  build-and-deploy:
+  build_site:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
+      # If you're using pnpm, add this step then change the commands and cache key below to use `pnpm`
+      # - name: Install pnpm
+      #   uses: pnpm/action-setup@v3
+      #   with:
+      #     version: 8
 
-      - name: Use Node.js 22
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'pnpm'
+  node-version: 20
+  cache: npm
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: npm i
 
-      - name: Build
+      - name: build
         env:
-        BASE_PATH: '/${{ github.event.repository.name }}'
-        run: pnpm build
+  BASE_PATH: '/${{ github.event.repository.name }}'
+        run: |
+  npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-        # this should match the `pages` option in your adapter-static options
-        path: 'build/'
-
+ # this should match the `pages` option in your adapter-static options
+  path: 'build/'
 
   deploy:
     needs: build_site
