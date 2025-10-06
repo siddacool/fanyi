@@ -1,40 +1,56 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy to GitHub Pages (with pnpm)
 
 on:
   push:
-    branches:
-      - main # Adjust if using a different default branch
-
-permissions:
-  contents: write
+    branches: 'main'
 
 jobs:
-  build-and-deploy:
+  build_site:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
+      - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 10 # Using version 10 from Script 2, or use latest if preferred
 
-      - name: Use Node.js 22
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'pnpm'
+          node-version: 20
+          cache: 'pnpm' # Changed from 'npm' to 'pnpm' for caching
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        # Changed from 'npm i' to 'pnpm install'
+        run: pnpm install --frozen-lockfile # Using the more reliable install command from Script 2
 
-      - name: Build Storybook
-        run: pnpm build
+      - name: build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        # Changed from 'npm run build' to 'pnpm run build'
+        run: |
+          pnpm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: build
+          path: 'build/'
+
+  deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
