@@ -57,6 +57,7 @@
     "@flightlesslabs/colors": "^0.2.0",
     "@flightlesslabs/grid": "^0.2.0",
     "@flightlesslabs/utils": "^0.3.0",
+    "@iconify/svelte": "^5.0.2",
     "bits-ui": "^2.11.4",
     "dayjs": "^1.11.18",
     "dexie": "^4.2.0",

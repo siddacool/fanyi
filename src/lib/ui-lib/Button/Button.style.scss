@@ -12,9 +12,9 @@
   text-decoration: none;
   margin: 0;
   border: 0;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 0 12px;
-  font-weight: 500;
+  font-weight: 450;
 
   svg.iconify {
     font-size: 1.55rem;
@@ -57,25 +57,25 @@
     }
 
     &--primary {
-      color: var(--dodo-color-constant-black);
-      background-color: var(--dodo-color-accent-400);
+      color: var(--dodo-color-constant-white);
+      background-color: var(--dodo-color-primary-400);
 
       &:hover {
-        background-color: var(--dodo-color-accent-500);
+        background-color: var(--dodo-color-primary-500);
       }
 
       &:active {
-        background-color: var(--dodo-color-accent-600);
+        background-color: var(--dodo-color-primary-600);
       }
 
       &.theme {
         &--dark {
           &:hover {
-            background-color: var(--dodo-color-accent-300);
+            background-color: var(--dodo-color-primary-300);
           }
 
           &:active {
-            background-color: var(--dodo-color-accent-200);
+            background-color: var(--dodo-color-primary-200);
           }
         }
       }
