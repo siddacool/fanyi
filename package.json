@@ -1,0 +1,65 @@
+{
+  "name": "fanyi",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint .",
+    "svelte-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check": "pnpm run svelte-check && eslint . && pnpm run lint",
+    "check:fix": "pnpm run svelte-check && eslint . && pnpm run format",
+    "storybook": "storybook dev -p 6006"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.1",
+    "@eslint/compat": "^1.4.0",
+    "@eslint/js": "^9.36.0",
+    "@storybook/addon-a11y": "^9.1.10",
+    "@storybook/addon-docs": "^9.1.10",
+    "@storybook/addon-svelte-csf": "^5.0.10",
+    "@storybook/addon-vitest": "^9.1.10",
+    "@storybook/sveltekit": "^9.1.10",
+    "@sveltejs/adapter-static": "^3.0.9",
+    "@sveltejs/kit": "^2.43.2",
+    "@sveltejs/vite-plugin-svelte": "^6.2.0",
+    "@types/node": "^22",
+    "@vueless/storybook-dark-mode": "^9.0.9",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-storybook": "^9.1.10",
+    "eslint-plugin-svelte": "^3.12.4",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.4.0",
+    "sass": "^1.93.2",
+    "storybook": "^9.1.10",
+    "svelte": "^5.39.5",
+    "svelte-check": "^4.3.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.1",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "volta": {
+    "node": "22.18.0",
+    "pnpm": "10.18.0"
+  },
+  "dependencies": {
+    "@flightlesslabs/colors": "^0.2.0",
+    "@flightlesslabs/grid": "^0.2.0",
+    "@flightlesslabs/utils": "^0.3.0",
+    "bits-ui": "^2.11.4",
+    "dayjs": "^1.11.18",
+    "dexie": "^4.2.0",
+    "nanoid": "^5.1.6"
+  }
+}

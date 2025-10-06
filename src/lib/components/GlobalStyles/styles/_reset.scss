@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--dodo-color-neutral-800);
+  margin: 0;
+  padding: 0;
+  background-color: var(--dodo-color-neutral-100);
+  overflow-x: hidden;
+  font-variation-settings: 'wdth' 100;
+}
+
+button,
+a,
+input,
+textarea,
+label {
+  -webkit-tap-highlight-color: transparent;
+}

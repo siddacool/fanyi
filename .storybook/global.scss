@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import '@flightlesslabs/colors/global.css';
+@import '../src/lib/components/GlobalStyles/styles/index.scss';
+
+p {
+  &:where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
+    font-size: 15px !important;
+  }
+}
+
+.dodo-theme--dark {
+  .sbdocs-wrapper {
+    background-color: #292c2e;
+  }
+
+  .sbdocs-title {
+    color: #c9cdcf;
+  }
+
+  .sbdocs-preview {
+    border-color: rgb(86 86 86 / 97%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #c9cdcf;
+  }
+
+  p {
+    color: #c9cdcf;
+  }
+
+  .sb-bar {
+    background-color: #292c2e;
+  }
+
+  .sbdocs {
+    .docs-story {
+      > div {
+        background: #212324 !important;
+      }
+    }
+  }
+
+  .docblock-argstable {
+    thead {
+      th {
+        color: #c9cdcf !important;
+      }
+    }
+
+    tbody > tr > * {
+      background-color: #212324 !important;
+    }
+
+    tr:hover {
+      td {
+        background-color: #212324 !important;
+      }
+    }
+
+    td {
+      color: #c9cdcf !important;
+
+      span {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.dodo-theme--dark.sb-show-main {
+  background-color: #292c2e !important;
+}
+
+pre.prismjs {
+  font-size: 1rem;
+  font-weight: 500;
+}
